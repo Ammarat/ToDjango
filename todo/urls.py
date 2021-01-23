@@ -15,10 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from product.views import dz 
-from product.views import add12
-from product.views import change12
-from product.views import deleted12
+from product.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,5 +25,6 @@ urlpatterns = [
     path("add12", add12, name="test1"),
     path("deleted12", deleted12, name="test3"),
     path("change12", change12, name="test2"),
+    path("add-todo/", add_todo, name="add-todo"),
 ]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
