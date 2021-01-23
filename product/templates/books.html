@@ -1,0 +1,41 @@
+{%load static%}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ToDo</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" />
+	<link rel="stylesheet" href="{% static 'checkbox.css' %}"/> 
+</head>
+<body>
+<section>
+		
+		<div class="create_container">
+			<form action = "{% url 'add_book' %}" method="POST">
+			{% csrf_token %}
+            <h1>Add Book</h1>
+			<input type="text" class="create_input" placeholder="Напишите сюда заголовок" name="title"/><br><br>
+            <input type="text" class="create_input" placeholder="Напишите сюда подзаголовок" name="subtitle"/><br><br>
+            <input type="text" class="create_input" placeholder="Напишите сюда описание" name="description"/><br><br>
+            <input type="number" class="create_input" placeholder="Напишите сюда цену" name="price"/><br><br>
+            <input type="text" class="create_input" placeholder="Напишите сюда жанр" name="genre"/><br><br>
+            <input type="text" class="create_input" placeholder="Напишите сюда автора" name="author"/><br><br>
+            <input type="datetime-local" class="create_input" placeholder="Напишите сюда год выхода книги" name="year"/><br><br>
+            <button type="" class="create_button">Добавить</button>
+			</form>
+            <br>
+            <hr>
+
+             {% for book in books  %}
+                <div>
+                 <h3>{{ book.title}} - {{ book.author }}</h3>
+                 <hr>
+                 <h4> {{ book.price }}</h4}
+                </div>
+                <hr>
+            {% endfor %}
+		</div>
+		</div>
+	</section>
+</body>
+</html>

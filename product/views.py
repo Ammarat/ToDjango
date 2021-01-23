@@ -1,8 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import ToDo
+from .models import ToDo, Books
 
 def dz(request):
     return render(request, "index.html")
+
+def books(request):
+    books = Books.objects.all()
+    return render(request, "books.html", {"books": books})
+    
 
 def add12(request):
     todo_list = ToDo.objects.all()
@@ -16,10 +21,18 @@ def change12(request):
 def deleted12(request):
     return render(request, "deleted12.html")
 
-def add_todo(request):
+def add_book(request):
     form= request.POST
-    text = form["todo_text"]
-    todo= ToDo(text=text)
-    todo.save()
-    return redirect(add12)
+    book = Books(
+        title=form["title"],
+        subtitle=form["subtitle"],
+        description=form["description"],
+        price=form["price"],
+        genre=form["genre"],
+        author=form["author"],
+        year=form["year"][:10]
+    )
+    
+    book.save()
+    return redirect (Books)
     
