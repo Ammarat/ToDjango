@@ -16,21 +16,21 @@
             <h1>Add Book</h1>
 			<input type="text" class="create_input" placeholder="Напишите сюда заголовок" name="title"/><br><br>
             <input type="text" class="create_input" placeholder="Напишите сюда подзаголовок" name="subtitle"/><br><br>
-            <input type="text" class="create_input" placeholder="Напишите сюда описание" name="description"/><br><br>
+            {% comment %} <input type="text" class="create_input" placeholder="Напишите сюда описание" name="description"/><br><br>
             <input type="number" class="create_input" placeholder="Напишите сюда цену" name="price"/><br><br>
             <input type="text" class="create_input" placeholder="Напишите сюда жанр" name="genre"/><br><br>
             <input type="text" class="create_input" placeholder="Напишите сюда автора" name="author"/><br><br>
-            <input type="datetime-local" class="create_input" placeholder="Напишите сюда год выхода книги" name="year"/><br><br>
-            <button type="" class="create_button">Добавить</button>
+            <input type="datetime-local" class="create_input" placeholder="Напишите сюда год выхода книги" name="year"/><br><br> {% endcomment %}
+            <button type="submit" class="create_button">Добавить</button>
 			</form>
             <br>
             <hr>
 
              {% for book in books  %}
                 <div>
-                 <h3>{{ book.title}} - {{ book.author }}</h3>
+                 <h3>{{ book.title}} - {{ book.subtitle }}</h3>
                  <hr>
-                 <h4> {{ book.price }}</h4}
+                 {% comment %} <h4> {{ book.price }}</h4} {% endcomment %}
                 </div>
                 <hr>
             {% endfor %}

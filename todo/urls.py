@@ -18,14 +18,16 @@ from django.urls import path
 from product.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from product.views import delete_todo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", dz, name="home"),
-    path("books", books, name="books"),
     path("add12", add12, name="test1"),
+    path("add/todo", add_todo, name="add_todo"),
+    path("books", books, name="books"),
+    path("book/add", add_book, name="add_book"),
     path("deleted12", deleted12, name="test3"),
     path("change12", change12, name="test2"),
-    path("add_book", add_book, name="add_book"),
+    path( "delete-todo/<id>" , delete_todo, name="delete-todo")
 ]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
